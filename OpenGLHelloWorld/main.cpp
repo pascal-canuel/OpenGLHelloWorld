@@ -15,28 +15,28 @@ void getKeyStroke(unsigned char key, int x, int y)
 	switch (key)
 	{
 		case 'r':
-			glClearColor(255, 0, 0, 0);
+			glClearColor(1, 0, 0, 0);
 			break;
 		case 'b':
-			glClearColor(0, 0, 255, 0);
+			glClearColor(0, 0, 1, 0);
 			break;
 		case 'v':
-			glClearColor(0, 255, 0, 0);
+			glClearColor(0, 1, 0, 0);
 			break;
 		case 'n':
 			glClearColor(0, 0, 0, 0);
 			break;
 		case 'm':
-			glClearColor(127, 255, 255, 0);
+			glClearColor(0.5, 0, 1, 0);
 			break;
 		case 't':
-			glClearColor(64, 224, 208, 0);
+			glClearColor(0.25, 0.88, 0.82, 0);
 			break;
 		case 'o':
-			glClearColor(255, 128, 0, 0);
+			glClearColor(1, 0.5, 0, 0);
 			break;
 		default:
-			glClearColor(255, 255, 255, 0);
+			glClearColor(1, 1, 1, 0);
 			break;
 	}
 
