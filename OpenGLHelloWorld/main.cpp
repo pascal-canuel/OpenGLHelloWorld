@@ -1,6 +1,7 @@
 #include "Dependencies\glew\glew.h"
 #include "Dependencies\freeglut\freeglut.h"
 #include <iostream>
+#include <cstdlib>
 
 //	Fonction de rendu
 void renderScene()
@@ -35,6 +36,9 @@ void getKeyStroke(unsigned char key, int x, int y)
 	case 'o':
 		glClearColor(1, 0.5, 0, 0);
 		break;
+	case '\x1b':	//	ECHAP
+		glutLeaveMainLoop();
+		break;
 	default:
 		glClearColor(1, 1, 1, 0);
 		break;
@@ -57,6 +61,7 @@ void getSpecialKeyStroke(int key, int x, int y)
 		break;
 	case GLUT_KEY_RIGHT:
 	{
+		//	TODO la fenêtre doit toujours être visible en entier, peu importe sa grandeur
 		int width = glutGet(GLUT_WINDOW_WIDTH), height = glutGet(GLUT_WINDOW_HEIGHT);
 		int borderWidth = glutGet(GLUT_SCREEN_WIDTH), borderHeight = glutGet(GLUT_SCREEN_HEIGHT);
 
@@ -71,14 +76,29 @@ void getSpecialKeyStroke(int key, int x, int y)
 		break;
 	case GLUT_KEY_F1:
 	{
-		glutReshapeWindow(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
+		glutReshapeWindow(glutGet(GLUT_SCREEN_WIDTH) / 2, glutGet(GLUT_SCREEN_HEIGHT) / 2);
 		glutPositionWindow(0, 0);
 	}
-		break;
+	break;
+	case GLUT_KEY_F2:
+	{
+		int halfWidth = glutGet(GLUT_SCREEN_WIDTH) / 2, halfHeight = glutGet(GLUT_SCREEN_HEIGHT) / 2;
+		glutReshapeWindow(halfWidth, halfHeight);
+		glutPositionWindow(halfWidth, halfHeight);
 	}
+	break;
+	case GLUT_KEY_F3:
+	{
 
-	//	redessiner la fenêtre
-	glutPostRedisplay();
+	}
+	break;
+	case GLUT_KEY_F4:
+	{
+
+	}
+	break;
+	}
+	}
 }
 
 int main(int argc, char **argv)
