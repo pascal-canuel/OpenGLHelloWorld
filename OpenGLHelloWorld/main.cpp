@@ -5,7 +5,6 @@
 //	Fonction de rendu
 void renderScene()
 {
-	glClearColor(0, 0, 255, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glFlush();
 }
@@ -40,6 +39,9 @@ void getKeyStroke(unsigned char key, int x, int y)
 			glClearColor(255, 255, 255, 0);
 			break;
 	}
+
+	//	redessiner la fenêtre
+	glutPostRedisplay();
 }
 
 int main(int argc, char **argv)
