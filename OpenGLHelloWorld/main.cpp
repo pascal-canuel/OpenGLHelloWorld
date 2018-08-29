@@ -2,6 +2,13 @@
 #include "Dependencies\freeglut\freeglut.h"
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+
+GLclampf randomColorValue()
+{
+	double random = rand() % 100 + 1;
+	return (GLclampf)(random / 100);
+}
 
 //	Fonction de rendu
 void renderScene()
@@ -72,7 +79,7 @@ void getSpecialKeyStroke(int key, int x, int y)
 		break;
 	}
 	case GLUT_KEY_LEFT:
-		glutReshapeWindow(glutGet(GLUT_WINDOW_X) - 50, glutGet(GLUT_WINDOW_Y) - 50);
+		glutReshapeWindow(glutGet(GLUT_WINDOW_WIDTH) - 50, glutGet(GLUT_WINDOW_HEIGHT) - 50);
 		break;
 	case GLUT_KEY_F1:
 	{
@@ -89,20 +96,24 @@ void getSpecialKeyStroke(int key, int x, int y)
 	break;
 	case GLUT_KEY_F3:
 	{
-
+		int halfWidth = glutGet(GLUT_SCREEN_WIDTH) / 2, halfHeight = glutGet(GLUT_SCREEN_HEIGHT) / 2;
+		glutReshapeWindow(halfWidth, halfHeight);
+		glutPositionWindow(halfWidth / 2, halfHeight / 2);
 	}
 	break;
 	case GLUT_KEY_F4:
-	{
-
-	}
-	break;
-	}
+		glClearColor(randomColorValue(), randomColorValue(), randomColorValue(), 0);
+		glutPostRedisplay();
+		break;
 	}
 }
 
+
 int main(int argc, char **argv)
 {
+	//	initialiser la valeur de base utilisée pour la fonction rand()
+	srand((int)time(0));
+
 	//	Écrire ici le code d’initialisation
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_SINGLE);
