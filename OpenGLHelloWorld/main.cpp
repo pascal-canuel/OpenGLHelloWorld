@@ -14,30 +14,30 @@ void getKeyStroke(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
-		case 'r':
-			glClearColor(1, 0, 0, 0);
-			break;
-		case 'b':
-			glClearColor(0, 0, 1, 0);
-			break;
-		case 'v':
-			glClearColor(0, 1, 0, 0);
-			break;
-		case 'n':
-			glClearColor(0, 0, 0, 0);
-			break;
-		case 'm':
-			glClearColor(0.5, 0, 1, 0);
-			break;
-		case 't':
-			glClearColor(0.25, 0.88, 0.82, 0);
-			break;
-		case 'o':
-			glClearColor(1, 0.5, 0, 0);
-			break;
-		default:
-			glClearColor(1, 1, 1, 0);
-			break;
+	case 'r':
+		glClearColor(1, 0, 0, 0);
+		break;
+	case 'b':
+		glClearColor(0, 0, 1, 0);
+		break;
+	case 'v':
+		glClearColor(0, 1, 0, 0);
+		break;
+	case 'n':
+		glClearColor(0, 0, 0, 0);
+		break;
+	case 'm':
+		glClearColor(0.5, 0, 1, 0);
+		break;
+	case 't':
+		glClearColor(0.25, 0.88, 0.82, 0);
+		break;
+	case 'o':
+		glClearColor(1, 0.5, 0, 0);
+		break;
+	default:
+		glClearColor(1, 1, 1, 0);
+		break;
 	}
 
 	//	redessiner la fenêtre
@@ -56,8 +56,22 @@ void getSpecialKeyStroke(int key, int x, int y)
 		glutLeaveFullScreen();
 		break;
 	case GLUT_KEY_RIGHT:
+		int width = glutGet(GLUT_WINDOW_X) + 50;			
+		int height = glutGet(GLUT_WINDOW_Y) + 50;
+
+		if(width > glutGet(GLUT_WINDOW_WIDTH) || glutGet(GLUT_WINDOW_HEIGHT) < height)
+		{
+			width -= 50;
+			height -= 50;
+		}
+
+		glutReshapeWindow(width, height);
 		break;
 	case GLUT_KEY_LEFT:
+		glutReshapeWindow(glutGet(GLUT_WINDOW_X) - 50, glutGet(GLUT_WINDOW_Y) - 50);
+		break;
+	case GLUT_KEY_F1:
+
 		break;
 	}
 
