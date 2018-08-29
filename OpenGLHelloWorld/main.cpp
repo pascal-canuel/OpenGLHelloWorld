@@ -44,6 +44,27 @@ void getKeyStroke(unsigned char key, int x, int y)
 	glutPostRedisplay();
 }
 
+//	Fonction de rappel pour capture les touches spéciales du clavier
+void getSpecialKeyStroke(int key, int x, int y)
+{
+	switch (key)
+	{
+	case GLUT_KEY_UP:
+		glutFullScreen();
+		break;
+	case GLUT_KEY_DOWN:
+		glutLeaveFullScreen();
+		break;
+	case GLUT_KEY_RIGHT:
+		break;
+	case GLUT_KEY_LEFT:
+		break;
+	}
+
+	//	redessiner la fenêtre
+	glutPostRedisplay();
+}
+
 int main(int argc, char **argv)
 {
 	//	Écrire ici le code d’initialisation
@@ -55,6 +76,7 @@ int main(int argc, char **argv)
 	//	enregistre les fonctions de rappel
 	glutDisplayFunc(renderScene);
 	glutKeyboardFunc(getKeyStroke);
+	glutSpecialFunc(getSpecialKeyStroke);
 
 	//	démarre la boucle de traitement des événements 
 	glutMainLoop();
