@@ -56,22 +56,24 @@ void getSpecialKeyStroke(int key, int x, int y)
 		glutLeaveFullScreen();
 		break;
 	case GLUT_KEY_RIGHT:
-		int width = glutGet(GLUT_WINDOW_X) + 50;			
-		int height = glutGet(GLUT_WINDOW_Y) + 50;
+	{
+		int width = glutGet(GLUT_WINDOW_WIDTH), height = glutGet(GLUT_WINDOW_HEIGHT);
+		int borderWidth = glutGet(GLUT_SCREEN_WIDTH), borderHeight = glutGet(GLUT_SCREEN_HEIGHT);
 
-		if(width > glutGet(GLUT_WINDOW_WIDTH) || glutGet(GLUT_WINDOW_HEIGHT) < height)
-		{
-			width -= 50;
-			height -= 50;
-		}
+		width >= borderWidth ? width = borderWidth : width += 50;
+		height >= borderHeight ? height = borderHeight : height += 50;
 
 		glutReshapeWindow(width, height);
 		break;
+	}
 	case GLUT_KEY_LEFT:
 		glutReshapeWindow(glutGet(GLUT_WINDOW_X) - 50, glutGet(GLUT_WINDOW_Y) - 50);
 		break;
 	case GLUT_KEY_F1:
-
+	{
+		glutReshapeWindow(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
+		glutPositionWindow(0, 0);
+	}
 		break;
 	}
 
