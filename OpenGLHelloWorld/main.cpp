@@ -6,6 +6,8 @@
 
 #include "Shader_Loader.h"
 
+GLuint program;
+
 GLclampf randomColorValue()
 {
 	double random = rand() % 100 + 1;
@@ -16,6 +18,10 @@ GLclampf randomColorValue()
 void renderScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	glUseProgram(program);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
 	glFlush();
 }
 
@@ -130,11 +136,8 @@ int main(int argc, char **argv)
 	glutSpecialFunc(getSpecialKeyStroke);
 
 	Core::Shader_Loader shaderLoader;
-	GLuint program;
 	
 	program = shaderLoader.CreateProgram((char *)"Vertex_Shader.glsl", (char *)"Fragment_Shader.glsl");
-
-	//glUseProgram(program);
 
 	//	démarre la boucle de traitement des événements 
 	glutMainLoop();
