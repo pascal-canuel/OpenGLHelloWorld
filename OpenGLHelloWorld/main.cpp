@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "Shader_Loader.h"
+
 GLclampf randomColorValue()
 {
 	double random = rand() % 100 + 1;
@@ -120,10 +122,19 @@ int main(int argc, char **argv)
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("Laboratoire 1");
 
+	glewInit();
+
 	//	enregistre les fonctions de rappel
 	glutDisplayFunc(renderScene);
 	glutKeyboardFunc(getKeyStroke);
 	glutSpecialFunc(getSpecialKeyStroke);
+
+	Core::Shader_Loader shaderLoader;
+	GLuint program;
+	
+	program = shaderLoader.CreateProgram((char *)"Vertex_Shader.glsl", (char *)"Fragment_Shader.glsl");
+
+	//glUseProgram(program);
 
 	//	démarre la boucle de traitement des événements 
 	glutMainLoop();
