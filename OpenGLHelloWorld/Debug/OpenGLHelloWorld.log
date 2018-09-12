@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\usager\documents\openglhelloworld-lab2\openglhelloworld-lab2\openglhelloworld\main.cpp(75): warning C4305: 'argument' : troncation de 'double' à 'GLclampf'
+  OpenGLHelloWorld.vcxproj -> C:\Users\usager\Documents\OpenGLHelloWorld-lab2\OpenGLHelloWorld-lab2\Debug\OpenGLHelloWorld.exe
