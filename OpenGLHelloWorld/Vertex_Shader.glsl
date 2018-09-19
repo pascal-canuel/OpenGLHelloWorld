@@ -1,5 +1,10 @@
 #version 430 core
 
+layout(location = 0) in vec4 Position;
+
+layout(location = 1) in vec4 PositionColor;
+out vec4 Color;
+
 void main(void)
 {
 	//const vec4 vertices[3] = vec4[3](vec4(0.25, -0.25, 0.5, 1.0),
@@ -54,5 +59,8 @@ void main(void)
 									vec4(0.25, -0.625, 0.5, 1.0),
 									vec4(0, -0.5, 0.5, 1.0));*/
 
-	gl_Position = vertices[gl_VertexID];
+	//gl_Position = vertices[gl_VertexID];
+	gl_Position = Position;
+
+	Color = PositionColor;
 }
